@@ -9,7 +9,7 @@ import useStyles from './styles';
 import { Search, Sidebar } from '../index';
 import { setUser } from '../../features/auth';
 import { fetchToken, createSessionId, moviesApi } from '../../utils/index';
-import { ColorModeContext } from '../../utils/ToggleColorMode';
+import { ColorModeContext } from '../../utils/ToggleColorMode.jsx';
 
 function NavBar() {
   const classes = useStyles();
