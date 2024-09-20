@@ -16,7 +16,7 @@ function App() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <NavBar />
+      <NavBar /> {/* No matter on which route we're, always show NavBar */}
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Routes>
@@ -27,7 +27,7 @@ function App() {
           <Route exact path="/profile/:id" element={<Profile />} />
         </Routes>
       </main>
-      <div ref={alanBtnContainer} />
+      {/* <div ref={alanBtnContainer} /> */}
     </div>
   );
 }

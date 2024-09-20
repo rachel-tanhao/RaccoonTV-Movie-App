@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import useStyles from './styles';
-import { Search, Sidebar } from '../index';
+import { Search, SideBar } from '../index';
 import { setUser } from '../../features/auth';
 import { fetchToken, createSessionId, moviesApi } from '../../utils/index';
 import { ColorModeContext } from '../../utils/ToggleColorMode.jsx';
@@ -99,11 +99,11 @@ function NavBar() {
               classes={{ paper: classes.drawerPaper }}
               ModalProps={{ keepMounted: true }}
             >
-              <Sidebar setMobileOpen={setMobileOpen} />
+              <SideBar setMobileOpen={setMobileOpen} />
             </Drawer>
           ) : (
             <Drawer classes={{ paper: classes.drawerPaper }} variant="permanent" open>
-              <Sidebar setMobileOpen={setMobileOpen} />
+              <SideBar setMobileOpen={setMobileOpen} />
             </Drawer>
           )}
         </nav>
