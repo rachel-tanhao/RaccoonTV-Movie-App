@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, Typography, Button, ButtonGroup, Grid, Box, CircularProgress, Rating } from '@mui/material';
+import { Modal, Typography, Button, ButtonGroup, Box, CircularProgress, Rating } from '@mui/material';
+import Grid from '@mui/material/Grid2';
 import { Movie as MovieIcon, Theaters, Language, PlusOne, Favorite, FavoriteBorderOutlined, Remove, ArrowBack } from '@mui/icons-material';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,6 +11,7 @@ import { MovieList } from '../index';
 import { useGetMovieQuery, useGetRecommendationsQuery, useGetListQuery } from '../../services/TMDB';
 import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
 import genreIcons from '../../assets/genres';
+
 
 function MovieInformation() {
   const classes = useStyles();
@@ -26,33 +28,41 @@ function MovieInformation() {
   const [isMovieFavorited, setIsMovieFavorited] = useState(false);
   const [isMovieWatchlisted, setIsMovieWatchlisted] = useState(false);
 
+
+  // use Effect to check if the movie is already in the user's favorites or watchlist
   useEffect(() => {
     setIsMovieFavorited(!!favoriteMovies?.results?.find((movie) => movie?.id === data?.id));
   }, [favoriteMovies, data]);
+
+  // use Effect to check if the movie is already in the user's watchlist
   useEffect(() => {
     setIsMovieWatchlisted(!!watchlistMovies?.results?.find((movie) => movie?.id === data?.id));
   }, [watchlistMovies, data]);
 
+
+  // function to add or remove a movie from the user's favorites
   const addToFavorites = async () => {
     await axios.post(`https://api.themoviedb.org/3/account/${user.id}/favorite?api_key=${process.env.REACT_APP_TMDB_KEY}&session_id=${localStorage.getItem('session_id')}`, {
       media_type: 'movie',
       media_id: id,
       favorite: !isMovieFavorited,
     });
-
     setIsMovieFavorited((prev) => !prev);
   };
 
+
+  // function to add or remove a movie from the user's watchlist
   const addToWatchList = async () => {
     await axios.post(`https://api.themoviedb.org/3/account/${user.id}/watchlist?api_key=${process.env.REACT_APP_TMDB_KEY}&session_id=${localStorage.getItem('session_id')}`, {
       media_type: 'movie',
       media_id: id,
       watchlist: !isMovieWatchlisted,
     });
-
     setIsMovieWatchlisted((prev) => !prev);
   };
 
+
+  // if the movie is still fetching, display a loading spinner
   if (isFetching) {
     return (
       <Box display="flex" alignItems="center" justifyContent="center">
@@ -61,6 +71,7 @@ function MovieInformation() {
     );
   }
 
+  // if there was an error fetching the movie, display an error message
   if (error) {
     return (
       <Box display="flex" alignItems="center" justifyContent="center">
@@ -69,15 +80,14 @@ function MovieInformation() {
     );
   }
 
+
   return (
     <Grid container className={classes.containerSpaceAround}>
+
       <Grid item sm={12} lg={4} align="center">
-        <img
-          src={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
-          className={classes.poster}
-          alt={data?.title}
-        />
+        <img src={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`} className={classes.poster} alt={data?.title}/>
       </Grid>
+
       <Grid item container direction="column" lg={7}>
         <Typography variant="h3" align="center" gutterBottom>
           {data?.title} ({data.release_date.split('-')[0]})
@@ -85,7 +95,10 @@ function MovieInformation() {
         <Typography variant="h5" align="center" gutterBottom>
           {data?.tagline}
         </Typography>
+
         <Grid item className={classes.containerSpaceAround}>
+
+          {/* Display the movie's rating and runtime */}
           <Box display="flex" align="center">
             <Rating readOnly value={data.vote_average / 2} />
             <Typography gutterBottom variant="subtitle1" style={{ marginLeft: '10px' }}>
@@ -94,6 +107,8 @@ function MovieInformation() {
           </Box>
           <Typography gutterBottom variant="h6" align="center">{data?.runtime}min</Typography>
         </Grid>
+
+        {/* Display the movie's genres */}
         <Grid item className={classes.genresContainer}>
           {data?.genres?.map((genre) => (
             <Link className={classes.links} key={genre.name} to="/" onClick={() => dispatch(selectGenreOrCategory(genre.id))}>
@@ -102,9 +117,13 @@ function MovieInformation() {
             </Link>
           ))}
         </Grid>
+
+        {/* Display the movie's overview and top cast */}
         <Typography variant="h5" gutterBottom style={{ marginTop: '20px' }}>Overview</Typography>
         <Typography style={{ marginBottom: '2rem' }}>{data?.overview}</Typography>
         <Typography variant="h5" gutterBottom>Top Cast</Typography>
+        
+        {/* Display the top 6 cast members */}
         <Grid item container spacing={2}>
           {data && data?.credits?.cast?.map((character, i) => (
             character.profile_path && (
@@ -122,8 +141,12 @@ function MovieInformation() {
             )
           )).slice(0, 6)}
         </Grid>
+
+
         <Grid item container style={{ marginTop: '2rem' }}>
           <div className={classes.buttonContainer}>
+
+            {/* Display the buttons to visit the movie's website, IMDB page, and trailer */}
             <Grid item xs={12} sm={6} className={classes.buttonContainer}>
               <ButtonGroup size="small" variant="outlined">
                 <Button target="_blank" rel="noopener noreferrer" href={data?.homepage} endIcon={<Language />}>Website</Button>
@@ -131,6 +154,8 @@ function MovieInformation() {
                 <Button onClick={() => setOpen(true)} href="#" endIcon={<Theaters />}>Trailer</Button>
               </ButtonGroup>
             </Grid>
+
+            {/* Display the buttons to add or remove the movie from the user's favorites or watchlist */}
             <Grid item xs={12} sm={6} className={classes.buttonContainer}>
               <ButtonGroup size="small" variant="outlined">
                 <Button onClick={addToFavorites} endIcon={isMovieFavorited ? <FavoriteBorderOutlined /> : <Favorite />}>
@@ -146,10 +171,13 @@ function MovieInformation() {
                 </Button>
               </ButtonGroup>
             </Grid>
+
           </div>
         </Grid>
       </Grid>
+
       <Box marginTop="5rem" width="100%">
+        {/* Display the movie's recommendations */}
         <Typography variant="h3" gutterBottom align="center">
           You might also like
         </Typography>
@@ -167,7 +195,7 @@ function MovieInformation() {
           <iframe
             autoPlay
             className={classes.video}
-            frameBorder="0"
+            style="border:0"
             title="Trailer"
             src={`https://www.youtube.com/embed/${data.videos.results[0].key}`}
             allow="autoplay"
