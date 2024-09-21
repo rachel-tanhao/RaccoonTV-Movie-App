@@ -65,10 +65,10 @@ Well, let me tell you—I'm a raccoon with a huge love for Netflix and an even b
 - **Framework**: Built with **React** ⚛️
 - **State Management**: Powered by **Redux Toolkit** ⚙️
 - **Styling**: Material-UI for that sleek look 💅
-- **Voice Control**: Integrated with **Alan AI** for hands-free navigation—just speak and explore! 🗣️
 - **API Integration**: **Redux Toolkit Query** for seamless data fetching 🔄
 - **HTTP Client**: **Axios** for flexible API requests 🌐
 - **Data**: TMDB API for comprehensive movie information 🍿
+- **Voice Control**: Integrated with **Alan AI** for hands-free navigation—just speak and explore! 🗣️
 
 
 
@@ -135,6 +135,11 @@ To get this up and running, you'll need to add your API keys. In the `client` di
 REACT_APP_TMDB_KEY=your_tmdb_api_key
 REACT_APP_ALAN_SDK_KEY=your_alan_ai_sdk_key
 ```
+
+- For TMDB API key: [Grab it here](https://developer.themoviedb.org/docs/getting-started)
+- For Alan AI API key: [Grab it here](https://alan.app/)
+
+- 📣 I’ve temporarily disabled Alan AI voice control because their API key is a bit pricey for this raccoon—$100 to start! 💸 But the feature is fully implemented, so if you’re ready to splurge, you can set it up as above.
 
 ## 🤝 Contributing
 
