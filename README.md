@@ -1,12 +1,13 @@
 # RaccoonTV - The Movie App 🎬🍿
 
+
+<div align="center">
+  <img src="client/src/assets/logo/RaccoonTV-logo-transparent.png" alt="Logo" width="350"/>
+</div>
+
 **Hey there, movie lovers!** It’s me, your sneaky but oh-so-friendly neighborhood raccoon! 🦝 I’ve built **RaccoonTV**,  a Netflix-inspired full-stack movie app that does pretty much everything Netflix does—except, you know, stream full-length movies (ah, copyrights! 💸). What can I say? I’m just a humble raccoon with empty pockets. 👉👈  But hey, you can still check out trailers! 
 
 On the tech side, RaccoonTV comes fully equipped with user authentication, profile management (build your own watchlist and favorites!), and even an AI Voice Assistant to navigate the app hands-free—how cool is that? 🎬✨
-
-<div align="center">
-  <img src="client/src/assets/logo/RaccoonTV-logo-transparent.png" alt="Logo" width="500"/>
-</div>
 
 
 
