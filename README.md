@@ -2,7 +2,7 @@
 
 
 <div align="center">
-  <img src="client/src/assets/logo/RaccoonTV-logo-transparent.png" alt="Logo" width="350"/>
+  <img src="client/src/assets/logo/RaccoonTV-logo-transparent.png" alt="Logo" width="400"/>
 </div>
 
 **Hey there, movie lovers!** It’s me, your sneaky but oh-so-friendly neighborhood raccoon! 🦝 I’ve built **RaccoonTV**,  a Netflix-inspired full-stack movie app that does pretty much everything Netflix does—except, you know, stream full-length movies (ah, copyrights! 💸). What can I say? I’m just a humble raccoon with empty pockets. 👉👈  But hey, you can still check out trailers! 
