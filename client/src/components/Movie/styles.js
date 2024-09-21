@@ -3,6 +3,11 @@ import { makeStyles } from '@mui/styles';
 export default makeStyles((theme) => ({
   movie: {
     padding: '10px',
+    [theme.breakpoints.down('sm')]: {
+      display: 'flex',
+      justifyContent: 'center',
+      width: '100%',
+    },
   },
   title: {
     color: theme.palette.text.primary,
@@ -13,6 +18,9 @@ export default makeStyles((theme) => ({
     marginTop: '10px',
     marginBottom: 0,
     textAlign: 'center',
+    [theme.breakpoints.down('sm')]: {
+      width: '160px',
+    },
   },
   links: {
     alignItems: 'center',
@@ -32,6 +40,10 @@ export default makeStyles((theme) => ({
     marginBottom: '10px',
     '&:hover': {
       transform: 'scale(1.05)',
+    },
+    [theme.breakpoints.down('sm')]: {
+      height: '400px', // Adjusted to match the height of the image in the MovieInformation component
+      width: 'auto',
     },
   },
 }));

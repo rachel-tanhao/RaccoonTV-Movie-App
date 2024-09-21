@@ -9,8 +9,8 @@ import { useGetGenresQuery } from '../../services/TMDB';
 import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
 import genreIcons from '../../assets/genres';
 
-const redLogo = 'https://fontmeme.com/permalink/210930/8531c658a743debe1e1aa1a2fc82006e.png';
-const blueLogo = 'https://fontmeme.com/permalink/210930/6854ae5c7f76597cf8680e48a2c8a50a.png';
+import darkModeLogo from '../../assets/logo/RaccoonTV-logo-dark-mode.png';
+import lightModeLogo from '../../assets/logo/RaccoonTV-logo-light-mode.png';
 
 const categories = [
   { label: 'Popular', value: 'popular' },
@@ -38,7 +38,7 @@ function SideBar({ setMobileOpen }) {
 
       {/* Logo image and link to home page */}
       <Link to="/" className={classes.imageLink}>
-        <img className={classes.image} src={theme.palette.mode === 'light' ? redLogo : blueLogo} alt="Filmpire Logo"/>
+        <img className={classes.image} src={theme.palette.mode === 'light' ? lightModeLogo : darkModeLogo} alt="Filmpire Logo"/>
       </Link>
 
       <Divider />

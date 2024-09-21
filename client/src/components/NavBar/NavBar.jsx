@@ -56,7 +56,12 @@ const NavBar = () =>  {
           )}
 
           {/* dark mode switch icon */}
-          <IconButton color="inherit" sx={{ ml: 1 }} onClick={colorMode.toggleColorMode}>
+          <IconButton onClick={colorMode.toggleColorMode}
+            sx={{ 
+              ml: 1,
+              color: theme.palette.mode === 'light' ? 'grey.800' : 'inherit'
+            }}
+          >
             {theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
           </IconButton>
 

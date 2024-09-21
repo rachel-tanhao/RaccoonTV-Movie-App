@@ -4,17 +4,19 @@ export default makeStyles((theme) => ({
   imageLink: {
     display: 'flex',
     justifyContent: 'center',
-    padding: '10% 0',
+    padding: '0% 0',
   },
   image: {
-    width: '70%',
+    width: '100%',
+    maxWidth: '240px',
+    height: 'auto',
   },
   links: {
     color: theme.palette.text.primary,
     textDecoration: 'none',
   },
   genreImages: {
-    filter: theme.palette.mode === 'dark' ? 'dark' : 'invert(1)',
+    filter: theme.palette.mode === 'dark' ? 'invert(1)' : 'none',
   },
   bigText: {
     color: 'primary',
