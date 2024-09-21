@@ -7,7 +7,7 @@ import useAlan from './Alan';
 
 import { Movies, Actors, MovieInformation, NavBar, Profile } from './index';
 
-function App() {
+const App = () => {
   const classes = useStyles();
   const alanBtnContainer = useRef();
 
