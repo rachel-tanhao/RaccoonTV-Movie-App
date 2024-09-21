@@ -1,0 +1,2 @@
+body.light{--scrollbar-track:#cfcfcf;--scrollbar-thumb:#fbb;--scrollbar-thumb-hover:#dc9191}body.dark{--scrollbar-track:#1f1f1f;--scrollbar-thumb:#000;--scrollbar-thumb-hover:#333}::-webkit-scrollbar{width:7px}::-webkit-scrollbar-track{background:var(--scrollbar-track)}::-webkit-scrollbar-thumb{background:var(--scrollbar-thumb);border-radius:5px}::-webkit-scrollbar-thumb:hover{background:var(--scrollbar-thumb-hover)}*{text-decoration:none}
+/*# sourceMappingURL=main.f29b7fc5.css.map*/

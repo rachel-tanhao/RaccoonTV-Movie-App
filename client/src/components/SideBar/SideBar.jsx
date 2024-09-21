@@ -38,7 +38,7 @@ function SideBar({ setMobileOpen }) {
 
       {/* Logo image and link to home page */}
       <Link to="/" className={classes.imageLink}>
-        <img className={classes.image} src={theme.palette.mode === 'light' ? lightModeLogo : darkModeLogo} alt="Filmpire Logo"/>
+        <img className={classes.image} src={theme.palette.mode === 'light' ? lightModeLogo : darkModeLogo} alt="RaccoonTV Logo"/>
       </Link>
 
       <Divider />
@@ -48,7 +48,7 @@ function SideBar({ setMobileOpen }) {
         <ListSubheader>Categories</ListSubheader>
         {categories.map(({ label, value }) => (
           <Link key={value} className={classes.links} to="/">
-            <ListItem button onClick={() => dispatch(selectGenreOrCategory(value))}>
+            <ListItem button={true} onClick={() => dispatch(selectGenreOrCategory(value))}>
                 <ListItemIcon>
                   {/* Genre icon: */}
                   <img src={genreIcons[label.toLowerCase()]} className={classes.genreImages} height={30} />

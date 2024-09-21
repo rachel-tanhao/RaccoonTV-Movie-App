@@ -16,7 +16,7 @@ root.render(
     <Provider store={store}>
         <ThemeProvider theme={theme}>
             <ToggleColorMode>
-                <BrowserRouter>
+                <BrowserRouter basename="/RaccoonTV-Movie-App">
                     <App />
                 </BrowserRouter>
             </ToggleColorMode>
