@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { CssBaseline } from '@mui/material';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
 import useStyles from './styles';
 import useAlan from './Alan';
@@ -14,21 +14,23 @@ const App = () => {
   useAlan();
 
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <NavBar /> {/* No matter on which route we're, always show NavBar */}
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-        <Routes>
-          <Route exact path="/" element={<Movies />} />
-          <Route exact path="/approved" element={<Movies />} />
-          <Route exact path="/movie/:id" element={<MovieInformation />} />
-          <Route exact path="/actors/:id" element={<Actors />} />
-          <Route exact path="/profile/:id" element={<Profile />} />
-        </Routes>
-      </main>
-      {/* <div ref={alanBtnContainer} /> */}
-    </div>
+    <BrowserRouter basename="/RaccoonTV-Movie-App">
+      <div className={classes.root}>
+        <CssBaseline />
+        <NavBar /> {/* No matter on which route we're, always show NavBar */}
+        <main className={classes.content}>
+          <div className={classes.toolbar} />
+          <Routes>
+            <Route exact path="/" element={<Movies />} />
+            <Route exact path="/approved" element={<Movies />} />
+            <Route exact path="/movie/:id" element={<MovieInformation />} />
+            <Route exact path="/actors/:id" element={<Actors />} />
+            <Route exact path="/profile/:id" element={<Profile />} />
+          </Routes>
+        </main>
+        {/* <div ref={alanBtnContainer} /> */}
+      </div>
+    </BrowserRouter>
   );
 }
 
