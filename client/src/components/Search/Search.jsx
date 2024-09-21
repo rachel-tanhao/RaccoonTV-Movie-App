@@ -36,6 +36,7 @@ function Search() {
             ),
           },
         }}
+        placeholder="Search movies..."
       />
     </div>
   );
