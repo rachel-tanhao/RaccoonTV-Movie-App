@@ -6,12 +6,13 @@ import { useDispatch } from 'react-redux';
 import useStyles from './styles';
 import { searchMovie } from '../../features/currentGenreOrCategory';
 
+// This component is used to create a search bar for the user to enter a search query
 function Search() {
   const classes = useStyles();
   const [query, setQuery] = useState('');
   const dispatch = useDispatch();
 
-  const handleKeyPress = (e) => {
+  const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       dispatch(searchMovie(query));
     }
@@ -19,18 +20,21 @@ function Search() {
 
   return (
     <div className={classes.searchContainer}>
+      {/* The TextField component is used to create an input field for the user to enter a search query */}
       <TextField
-        onKeyPress={handleKeyPress}
+        onKeyDown={handleKeyDown}
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         variant="standard"
-        InputProps={{
-          className: classes.input,
-          startAdornment: (
-            <InputAdornment position="start">
-              <SearchIcon />
-            </InputAdornment>
-          ),
+        slotProps={{
+          input: {
+            className: classes.input,
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+          },
         }}
       />
     </div>

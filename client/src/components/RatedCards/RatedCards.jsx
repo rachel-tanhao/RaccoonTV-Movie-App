@@ -4,6 +4,8 @@ import { Typography, Box } from '@mui/material';
 import useStyles from './styles';
 import { Movie } from '../index';
 
+
+// This component is used to display a list of movies in a horizontal format
 function RatedCards({ title, movies }) {
   const classes = useStyles();
 

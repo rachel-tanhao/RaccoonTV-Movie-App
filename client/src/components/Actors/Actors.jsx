@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Box, Button, CircularProgress, Grid, Typography } from '@mui/material';
+import { Box, Button, CircularProgress, Typography } from '@mui/material';
+import Grid from '@mui/material/Grid2';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowBack } from '@mui/icons-material';
 
@@ -14,6 +15,7 @@ function Actors() {
   const { id } = useParams();
   const { data, isFetching, error } = useGetActorQuery(id);
   const { data: movies } = useGetMoviesByActorIdQuery({ id, page });
+  
 
   if (isFetching) {
     return (
@@ -33,6 +35,7 @@ function Actors() {
     );
   }
 
+  
   return (
     <>
       <Grid container spacing={3}>

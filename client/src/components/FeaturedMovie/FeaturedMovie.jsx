@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 
 import useStyles from './styles';
 
+
 function FeaturedMovie({ movie }) {
   const classes = useStyles();
 
   if (!movie) return null;
+
 
   return (
     <Box component={Link} to={`/movie/${movie.id}`} className={classes.featuredCardContainer}>

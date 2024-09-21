@@ -6,9 +6,12 @@ import useStyles from './styles';
 function Pagination({ currentPage, setPage, totalPages }) {
   const classes = useStyles();
 
+  // handles the go to previous page button
   const handlePrev = () => {
     if (currentPage !== 1) { setPage((prevPage) => prevPage - 1); }
   };
+
+  // handles the go to next page button
   const handleNext = () => {
     if (currentPage !== totalPages) { setPage((prevPage) => prevPage + 1); }
   };

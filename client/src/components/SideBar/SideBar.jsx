@@ -18,6 +18,8 @@ const categories = [
   { label: 'Upcoming', value: 'upcoming' },
 ];
 
+
+// This component is used to create a sidebar that displays categories and genres
 function SideBar({ setMobileOpen }) {
   const theme = useTheme();
   const classes = useStyles();
@@ -25,18 +27,23 @@ function SideBar({ setMobileOpen }) {
   const { data, isFetching } = useGetGenresQuery();
   const { genreIdOrCategoryName } = useSelector((state) => state.currentGenreOrCategory);
 
+  // When a genre or category got picked, close the sidebar
   useEffect(() => {
     setMobileOpen(false);
   }, [genreIdOrCategoryName]);
 
+
   return (
     <>
+
+      {/* Logo image and link to home page */}
       <Link to="/" className={classes.imageLink}>
         <img className={classes.image} src={theme.palette.mode === 'light' ? redLogo : blueLogo} alt="Filmpire Logo"/>
       </Link>
 
       <Divider />
 
+      {/* List of categories */}
       <List>
         <ListSubheader>Categories</ListSubheader>
         {categories.map(({ label, value }) => (
@@ -53,7 +60,8 @@ function SideBar({ setMobileOpen }) {
       </List>
 
       <Divider />
-
+        
+      {/* List of genres */}
       <List>
         <ListSubheader>Genres</ListSubheader>
         {isFetching ? ( // If fetching data, show loading spinner
