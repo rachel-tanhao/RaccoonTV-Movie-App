@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/RaccoonTV-Movie-App/static/css/main.f29b7fc5.css",
-    "main.js": "/RaccoonTV-Movie-App/static/js/main.37064dcf.js",
+    "main.js": "/RaccoonTV-Movie-App/static/js/main.794c687d.js",
     "static/media/RaccoonTV-logo-light-mode.png": "/RaccoonTV-Movie-App/static/media/RaccoonTV-logo-light-mode.f87d1472a6007577e272.png",
     "static/media/RaccoonTV-logo-dark-mode.png": "/RaccoonTV-Movie-App/static/media/RaccoonTV-logo-dark-mode.ee4ea803c11954ae8892.png",
     "index.html": "/RaccoonTV-Movie-App/index.html",
     "main.f29b7fc5.css.map": "/RaccoonTV-Movie-App/static/css/main.f29b7fc5.css.map",
-    "main.37064dcf.js.map": "/RaccoonTV-Movie-App/static/js/main.37064dcf.js.map"
+    "main.794c687d.js.map": "/RaccoonTV-Movie-App/static/js/main.794c687d.js.map"
   },
   "entrypoints": [
     "static/css/main.f29b7fc5.css",
-    "static/js/main.37064dcf.js"
+    "static/js/main.794c687d.js"
   ]
 }
