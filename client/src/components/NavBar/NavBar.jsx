@@ -16,31 +16,32 @@ const NavBar = () =>  {
   const isMobile = useMediaQuery('(max-width:600px)'); // is screen wide below 600px, use Mobile UI
   const theme = useTheme();
   const dispatch = useDispatch();
-  const { isAuthenticated, user } = useSelector((state) => state.user);
+  const { isAuthenticated, user } = useSelector((state) => state.user); // get user data from Redux store
   const [mobileOpen, setMobileOpen] = useState(false);
+  const colorMode = useContext(ColorModeContext); // get the color mode from the context
 
-  const colorMode = useContext(ColorModeContext);
+  const token = localStorage.getItem('request_token'); // get the token from local storage
+  const sessionIdFromLocalStorage = localStorage.getItem('session_id'); // get the session ID from local storage
 
-  const token = localStorage.getItem('request_token');
-  const sessionIdFromLocalStorage = localStorage.getItem('session_id');
 
+  // use useEffect to fetch the user data every time the token changes
   useEffect(() => {
     const logInUser = async () => {
-      if (token) {
+      if (token) { // If the token exists, fetch the user data
         if (sessionIdFromLocalStorage) {
           const { data: userData } = await moviesApi.get(`/account?session_id=${sessionIdFromLocalStorage}`);
           dispatch(setUser(userData));
-        } else {
+        } else { // If the session ID does not exist, create a new session ID
           const sessionId = await createSessionId();
           const { data: userData } = await moviesApi.get(`/account?session_id=${sessionId}`);
           dispatch(setUser(userData));
         }
       }
     };
-
-    logInUser();
+    logInUser(); // call the function when the token changes
   }, [token]);
 
+  
   return (
     <>
       <AppBar position="fixed">
