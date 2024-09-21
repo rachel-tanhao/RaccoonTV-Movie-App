@@ -3,6 +3,8 @@ import { Typography, Button } from '@mui/material';
 
 import useStyles from './styles';
 
+
+// This component is used to create a pagination component that allows the user to navigate through pages
 function Pagination({ currentPage, setPage, totalPages }) {
   const classes = useStyles();
 

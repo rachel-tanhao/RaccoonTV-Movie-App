@@ -12,11 +12,11 @@ function Profile() {
   const { data: watchlistMovies, refetch: refetchWatchlisted } = useGetListQuery({ listName: 'watchlist/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1 });
 
 
-  // use effect to refetch the favorite and watchlist movies every time the component mounts
+  // use effect to refetch the favorite and watchlist movies every time the component mounts 
   useEffect(() => {
     refetchFavorites();
     refetchWatchlisted();
-  }, []);
+  }, [refetchFavorites, refetchWatchlisted]);  // Added dependencies
   
 
   // function to log out the user

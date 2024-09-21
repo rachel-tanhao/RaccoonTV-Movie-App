@@ -6,10 +6,10 @@ export default makeStyles(() => ({
     height: '100%',
   },
   content: {
-    flexGrow: '1',
-    padding: '2em',
+    flexGrow: 1,
+    padding: '6em 2em 2em',
   },
-  toolbar: {
+  toolkit: {
     height: '70px',
   },
 }));

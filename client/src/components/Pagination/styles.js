@@ -8,6 +8,12 @@ export default makeStyles((theme) => ({
   },
   button: {
     margin: '30px 2px',
+    color: theme.palette.text.primary, // Ensure text color adapts to the theme
+    backgroundColor: theme.palette.background.paper, // Dynamic background color
+    border: `1px solid ${theme.palette.divider}`, // Border to match theme mode
+    '&:hover': {
+      backgroundColor: theme.palette.action.hover, // Hover effect based on the theme
+    },
   },
   pageNumber: {
     margin: '0 20px !important',

@@ -30,7 +30,7 @@ function SideBar({ setMobileOpen }) {
   // When a genre or category got picked, close the sidebar
   useEffect(() => {
     setMobileOpen(false);
-  }, [genreIdOrCategoryName]);
+  }, [genreIdOrCategoryName, setMobileOpen]);
 
 
   return (

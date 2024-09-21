@@ -22,7 +22,8 @@ function MovieInformation() {
   const { data, error, isFetching } = useGetMovieQuery(id);
   const { data: favoriteMovies } = useGetListQuery({ listName: 'favorite/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1 });
   const { data: watchlistMovies } = useGetListQuery({ listName: 'watchlist/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1 });
-  const { data: recommendations } = useGetRecommendationsQuery({ list: '/recommendations', movie_id: id });
+  const { data: recommendations } = useGetRecommendationsQuery({ movie_id: id });
+
 
   const [open, setOpen] = useState(false);
   const [isMovieFavorited, setIsMovieFavorited] = useState(false);
@@ -112,7 +113,7 @@ function MovieInformation() {
         <Grid item className={classes.genresContainer}>
           {data?.genres?.map((genre) => (
             <Link className={classes.links} key={genre.name} to="/" onClick={() => dispatch(selectGenreOrCategory(genre.id))}>
-              <img src={genreIcons[genre.name.toLowerCase()]} className={classes.genreImage} height={30} />
+              <img src={genreIcons[genre.name.toLowerCase()]} className={classes.genreImage} height={30} alt={genre.name} />
               <Typography color="textPrimary" variant="subtitle1">{genre?.name}</Typography>
             </Link>
           ))}
@@ -176,8 +177,8 @@ function MovieInformation() {
         </Grid>
       </Grid>
 
+      {/* Display the movie's recommendations (You Might Also Like)*/}
       <Box marginTop="5rem" width="100%">
-        {/* Display the movie's recommendations */}
         <Typography variant="h3" gutterBottom align="center">
           You might also like
         </Typography>
@@ -185,6 +186,7 @@ function MovieInformation() {
           ? <MovieList movies={recommendations} numberOfMovies={12} />
           : <Box>Sorry, nothing was found.</Box>}
       </Box>
+
       <Modal
         closeAfterTransition
         className={classes.modal}
@@ -195,7 +197,7 @@ function MovieInformation() {
           <iframe
             autoPlay
             className={classes.video}
-            style="border:0"
+            style={{ border: 0 }}
             title="Trailer"
             src={`https://www.youtube.com/embed/${data.videos.results[0].key}`}
             allow="autoplay"

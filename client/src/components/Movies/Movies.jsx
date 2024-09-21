@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 import { MovieList, Pagination, FeaturedMovie } from '../index';
 import { useGetMoviesQuery } from '../../services/TMDB';
 
+
+// This component is used to display a list of movies
 function Movies() {
   const [page, setPage] = useState(1);
 
