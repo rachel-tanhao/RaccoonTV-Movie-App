@@ -32,34 +32,35 @@ function SideBar({ setMobileOpen }) {
   return (
     <>
       <Link to="/" className={classes.imageLink}>
-        <img
-          className={classes.image}
-          src={theme.palette.mode === 'light' ? redLogo : blueLogo}
-          alt="Filmpire Logo"
-        />
+        <img className={classes.image} src={theme.palette.mode === 'light' ? redLogo : blueLogo} alt="Filmpire Logo"/>
       </Link>
+
       <Divider />
+
       <List>
         <ListSubheader>Categories</ListSubheader>
         {categories.map(({ label, value }) => (
           <Link key={value} className={classes.links} to="/">
             <ListItem button onClick={() => dispatch(selectGenreOrCategory(value))}>
-              <ListItemIcon>
-                <img src={genreIcons[label.toLowerCase()]} className={classes.genreImages} height={30} />
-              </ListItemIcon>
+                <ListItemIcon>
+                  {/* Genre icon: */}
+                  <img src={genreIcons[label.toLowerCase()]} className={classes.genreImages} height={30} />
+                </ListItemIcon>
               <ListItemText primary={label} />
             </ListItem>
           </Link>
         ))}
       </List>
+
       <Divider />
+
       <List>
         <ListSubheader>Genres</ListSubheader>
-        {isFetching ? (
+        {isFetching ? ( // If fetching data, show loading spinner
           <Box display="flex" justifyContent="center">
             <CircularProgress size="4rem" />
           </Box>
-        )
+        ) // Otherwise, show genres
           : data?.genres?.map(({ name, id }) => (
             <Link key={name} className={classes.links} to="/">
               <ListItem button onClick={() => dispatch(selectGenreOrCategory(id))}>
