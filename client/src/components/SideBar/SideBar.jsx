@@ -21,7 +21,7 @@ const categories = [
 function SideBar({ setMobileOpen }) {
   const theme = useTheme();
   const classes = useStyles();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); // dispatch means to transfer/send data from our component to our Redux store
   const { data, isFetching } = useGetGenresQuery();
   const { genreIdOrCategoryName } = useSelector((state) => state.currentGenreOrCategory);
 
