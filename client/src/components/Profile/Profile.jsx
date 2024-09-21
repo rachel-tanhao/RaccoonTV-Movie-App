@@ -11,16 +11,22 @@ function Profile() {
   const { data: favoriteMovies, refetch: refetchFavorites } = useGetListQuery({ listName: 'favorite/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1 });
   const { data: watchlistMovies, refetch: refetchWatchlisted } = useGetListQuery({ listName: 'watchlist/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1 });
 
+
+  // use effect to refetch the favorite and watchlist movies every time the component mounts
   useEffect(() => {
     refetchFavorites();
     refetchWatchlisted();
   }, []);
+  
 
+  // function to log out the user
   const logout = () => {
     localStorage.clear();
-    window.location.href = '/';
+    window.location.href = '/'; // redirect the user to the home page
   };
 
+
+  // On the Profile page, display the user's favorite and watchlist movies
   return (
     <Box>
       <Box display="flex" justifyContent="space-between">
@@ -29,6 +35,8 @@ function Profile() {
           Logout &nbsp; <ExitToApp />
         </Button>
       </Box>
+
+      {/* if the user has no favorite or watchlist movies, display a message */}
       {!favoriteMovies?.results?.length && !watchlistMovies?.results?.length
         ? <Typography variant="h5">Add favourite or watchlist same movies to see them here!</Typography>
         : (

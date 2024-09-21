@@ -1,8 +1,3 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { tmdbApi } from '../services/TMDB'; // movie database API
-import genreOrCategoryReducer from '../features/currentGenreOrCategory';
-import userReducer from '../features/auth';
- 
 // A reducer in React is like a decision-maker in a factory. 
 // It takes in two things: the current state (the factory's current status) and 
 // an action (a change request), and then decides how to update the state based on that action. 
@@ -19,10 +14,18 @@ import userReducer from '../features/auth';
 // and returns a new accumulator — in React, that accumulator is the state.
 
 
+import { configureStore } from '@reduxjs/toolkit';
+import { tmdbApi } from '../services/TMDB'; // movie database API
+import genreOrCategoryReducer from '../features/currentGenreOrCategory';
+import userReducer from '../features/auth';
+
 export default configureStore({
   reducer: {
-    // [tmdbApi.reducerPath]: tmdbApi.reducer,
-    // currentGenreOrCategory: genreOrCategoryReducer,
-    // user: userReducer,
+    [tmdbApi.reducerPath]: tmdbApi.reducer,
+    currentGenreOrCategory: genreOrCategoryReducer,
+    user: userReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    // Add this line to include the RTK Query middleware
+    getDefaultMiddleware().concat(tmdbApi.middleware),
 });
